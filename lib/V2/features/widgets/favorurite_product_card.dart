@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nectar/V2/Core/theme/app_theme.dart';
 import 'package:nectar/V2/Data/models/product_model.dart';
 import 'package:nectar/V2/features/product_details/product_detail_page.dart';
+
 class FavouriteProductCard extends StatefulWidget {
   final ProductModel product;
   const FavouriteProductCard({super.key, required this.product});
@@ -23,9 +24,12 @@ class _FavouriteProductCardState extends State<FavouriteProductCard> {
             SizedBox(
               width: 80,
               height: 120,
-              child: Image.network(widget.product.productImageUrl),
+              child: Image.network(
+                widget.product.productImageUrl,
+                errorBuilder: (context, error, stackTrace) => Text('Image'),
+              ),
             ),
-            SizedBox(width: 15,),
+            SizedBox(width: 15),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

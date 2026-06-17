@@ -42,6 +42,10 @@ class ProductCard extends StatelessWidget {
                       ),
                     );
                   },
+                  errorBuilder: (context, error, stackTrace) {
+                    debugPrint(error.toString());
+                    return const Icon(Icons.error);
+                  },
                 ),
               ),
             ),

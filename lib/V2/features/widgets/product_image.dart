@@ -19,6 +19,7 @@ class ProductImage extends StatelessWidget {
               width: 200,
               height: 150,
               fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Text('Image'),
             ),
           ),
           Image.network(
@@ -26,6 +27,7 @@ class ProductImage extends StatelessWidget {
             fit: BoxFit.contain,
             width: 300,
             height: 200,
+            errorBuilder: (context, error, stackTrace) => Text('Image'),
           ),
         ],
       ),

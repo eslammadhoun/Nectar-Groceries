@@ -3,7 +3,6 @@ import 'package:nectar/V2/Data/repositories/cart_repo.dart';
 import 'package:nectar/V2/Data/repositories/favorite_repo.dart';
 import 'package:nectar/V2/Data/repositories/products_repo.dart';
 import 'package:nectar/V2/Data/services/auth_service.dart';
-import 'package:nectar/V2/features/account/account_page.dart';
 import 'package:nectar/V2/features/account/account_page_vm.dart';
 import 'package:nectar/V2/features/cart/cart_page_vm.dart';
 import 'package:nectar/V2/features/category/catecory_vm.dart';

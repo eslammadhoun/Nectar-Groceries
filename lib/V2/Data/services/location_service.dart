@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationService {
@@ -23,7 +24,9 @@ class LocationService {
     Position positionInLatLong = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
-    print(positionInLatLong);
+    if (kDebugMode) {
+      print(positionInLatLong);
+    }
     return positionInLatLong;
   }
 

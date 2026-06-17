@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar/V2/Core/theme/app_theme.dart';
 import 'package:nectar/V2/Data/models/product_model.dart';
@@ -16,13 +14,6 @@ class CartProduct extends StatefulWidget {
 
 class _CartProductState extends State<CartProduct> {
   @override
-  void initState() {
-    super.initState();
-    final vm = Provider.of<CartProductVm>(context, listen: false);
-    // vm.quantity = widget.product.quantity ?? 1;
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Consumer<CartProductVm>(
       builder: (context, vm, child) {
@@ -38,7 +29,11 @@ class _CartProductState extends State<CartProduct> {
                     SizedBox(
                       width: 100,
                       height: 120,
-                      child: Image.network(widget.product.productImageUrl),
+                      child: Image.network(
+                        widget.product.productImageUrl,
+                        errorBuilder:
+                            (context, error, stackTrace) => Text('Image'),
+                      ),
                     ),
                     SizedBox(width: 20),
                     Expanded(
@@ -70,8 +65,10 @@ class _CartProductState extends State<CartProduct> {
                               Row(
                                 children: [
                                   GestureDetector(
-                                    onTap: () async{
-                                      await vm.deincrementQuantity(widget.product.productId);
+                                    onTap: () async {
+                                      await vm.deincrementQuantity(
+                                        widget.product.productId,
+                                      );
                                     },
                                     child: Container(
                                       width: 45,
@@ -92,7 +89,7 @@ class _CartProductState extends State<CartProduct> {
                                   ),
                                   SizedBox(width: 20),
                                   Text(
-                                    widget.product.quantity.toString() ?? '1',
+                                    widget.product.quantity.toString(),
                                     style: TextStyle(
                                       color: AppTheme.textColor,
                                       fontSize: 16,
@@ -102,7 +99,9 @@ class _CartProductState extends State<CartProduct> {
                                   SizedBox(width: 20),
                                   GestureDetector(
                                     onTap: () async {
-                                      await vm.incrementQuantity(widget.product.productId);
+                                      await vm.incrementQuantity(
+                                        widget.product.productId,
+                                      );
                                     },
                                     child: Container(
                                       width: 45,
@@ -143,7 +142,9 @@ class _CartProductState extends State<CartProduct> {
                   right: 0,
                   child: IconButton(
                     icon: Icon(Icons.close, color: Color(0xffB3B3B3)),
-                    onPressed: () async => await vm.deleteFromCart(widget.product.productId)
+                    onPressed:
+                        () async =>
+                            await vm.deleteFromCart(widget.product.productId),
                   ),
                 ),
               ],

@@ -19,7 +19,6 @@ class _LocationPageState extends State<LocationPage> {
       await vm.getCountryCitiesList();
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<LocationPageVm>(

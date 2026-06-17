@@ -1,62 +1,98 @@
-# 🥕 Nectar - Online Groceries App
+# Nectar - Online Grocery Shopping App
 
-**Nectar** is a modern, fully functional online grocery shopping application built with Flutter. It features a clean, premium UI designed for an optimal user experience, backed by Firebase for authentication and data management.
+A full-featured grocery shopping mobile application built with **Flutter** and **Firebase**, offering a seamless shopping experience with real-time product browsing, cart management, favorites, and location-based delivery.
 
-## 📱 Features
+## Screenshots
 
-- **Authentication**: Secure Login and Sign Up using Firebase Auth.
-- **Shop & Explore**: Browse products by categories, view exclusive offers, and best-selling items.
-- **Product Details**: Detailed view of products with descriptions, pricing, and related items.
-- **Cart Management**: Add items to cart, view total price, and manage quantities.
-- **Favorites**: Save your favorite items for quick access.
-- **Location Services**: Automatic user location detection using Geolocation and Geoapify.
-- **Account Management**: User profile and settings.
+| Onboarding | Home | Product Details |
+|:---:|:---:|:---:|
+| ![Onboarding](screenshots/onboarding.png) | ![Home](screenshots/home.png) | ![Product Details](screenshots/product_details.png) |
 
-## 🛠 Tech Stack & Architecture
+| Cart | Favorites | Account |
+|:---:|:---:|:---:|
+| ![Cart](screenshots/cart.png) | ![Favorites](screenshots/favorites.png) | ![Account](screenshots/account.png) |
 
-This project follows the **MVVM (Model-View-ViewModel)** architecture pattern with a Repository layer for clean data handling.
+| Login | Sign Up | Location |
+|:---:|:---:|:---:|
+| ![Login](screenshots/login.png) | ![Sign Up](screenshots/signup.png) | ![Location](screenshots/location.png) |
 
-- **Framework**: Flutter (Dart)
-- **State Management**: Provider
-- **Backend**: Firebase (Firestore, Authentication)
-- **API Integration**:
-  - **http** for REST API calls.
-  - Geoapify for reverse geocoding.
-  - CountryStateCity API for location data.
-- **Architecture**:
-  - **Core**: Theming, Constants, Helpers.
-  - **Data**: Models, Repositories, Services.
-  - **Features**: UI Views and ViewModels (Business Logic).
+## Features
 
-## 📂 Project Structure
+- **Authentication** - Email/password login & registration via Firebase Auth
+- **Product Browsing** - Browse products by categories with search functionality
+- **Product Details** - Detailed product view with expandable nutrition & description sections
+- **Shopping Cart** - Add/remove items, adjust quantities, and checkout
+- **Favorites** - Save products to favorites for quick access
+- **Location Services** - Auto-detect user location with geocoding for delivery addresses
+- **Explore & Search** - Discover products across multiple categories
+- **Network Monitoring** - Real-time connectivity status with offline overlay notification
+- **Persistent Auth State** - Stay logged in across sessions using SharedPreferences
+- **Responsive UI** - Clean, modern design following grocery app UX best practices
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | Flutter (Dart) |
+| **State Management** | Provider |
+| **Backend** | Firebase (Auth + Cloud Firestore) |
+| **Location** | Geolocator + Geocoding |
+| **Networking** | HTTP package |
+| **Local Storage** | SharedPreferences |
+| **Connectivity** | connectivity_plus + internet_connection_checker |
+| **UI Enhancements** | Flutter SVG, Overlay Support |
+| **Environment Config** | flutter_dotenv |
+
+## Architecture
+
+The project follows a **clean architecture** pattern with clear separation of concerns:
 
 ```
 lib/
-├── V2/
-│   ├── Core/           # Theme, Utils, Helpers
-│   ├── Data/           # Models, Repositories, Services
-│   └── features/       # Feature-based folders (View + ViewModel)
-│       ├── account/
-│       ├── cart/
-│       ├── home/
-│       ├── shop/
-│       └── ...
-└── main.dart           # Entry point
+ +-- main.dart
+ +-- V2/
+      +-- Core/
+      |    +-- helpers/          # Navigation, routing, providers setup
+      |    +-- theme/            # App-wide theming
+      |    +-- utils/            # Network connection monitoring
+      +-- Data/
+      |    +-- models/           # Product & Cart data models
+      |    +-- repositories/     # Data access layer (Cart, Favorites, Products)
+      |    +-- services/         # API, Auth, and Location services
+      +-- features/
+           +-- home/             # Home screen with banners & featured products
+           +-- shop/             # Main shop browsing
+           +-- explore/          # Category exploration
+           +-- category/         # Category-specific product listing
+           +-- product_details/  # Detailed product view
+           +-- cart/             # Shopping cart management
+           +-- favourite/        # Saved favorites
+           +-- account/          # User profile & settings
+           +-- login/            # User login
+           +-- signup/           # User registration
+           +-- location/         # Delivery location picker
+           +-- onbording/        # Onboarding flow
+           +-- splash/           # Splash screen
+           +-- order_accepted/   # Order confirmation
+           +-- widgets/          # Shared/reusable UI components
 ```
 
-## 🚀 Getting Started
+Each feature follows the **MVVM pattern** with dedicated `_page.dart` (View) and `_vm.dart` (ViewModel) files.
+
+## Getting Started
 
 ### Prerequisites
 
-- Flutter SDK installed (Version 3.7.0 or higher)
-- Dart SDK installed
-- Android Studio / VS Code with Flutter extensions
+- Flutter SDK `^3.7.2`
+- Dart SDK `^3.7.2`
+- Firebase project configured for Android/iOS
+- A `.env` file with required API keys
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/eslammadhoun/nectar
+   git clone https://github.com/eslammadhoun/nectar.git
    cd nectar
    ```
 
@@ -65,19 +101,33 @@ lib/
    flutter pub get
    ```
 
-3. **Firebase Setup**
-   - Create a new project in the [Firebase Console](https://console.firebase.google.com/).
-   - Configure Android and iOS apps.
-   - Download `google-services.json` (for Android) and `GoogleService-Info.plist` (for iOS) and place them in their respective folders.
+3. **Configure Firebase**
+   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com)
+   - Add your Android/iOS apps and download the config files
+   - Place `google-services.json` in `android/app/`
+   - Place `GoogleService-Info.plist` in `ios/Runner/`
 
-4. **API Configuration**
-   - This app uses **Geoapify** and **CountryStateCity** APIs.
+4. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   # Add your API keys to the .env file
+   ```
 
-5. **Run the App**
+5. **Run the app**
    ```bash
    flutter run
    ```
 
-### 📄 CopyWrite
-    - **ALL RIGHTS RESERVED To ESLAM MADHOUN 2025**
-    - **Software Enginer**
+## Contributing
+
+Contributions are welcome! Feel free to submit a Pull Request.
+
+## License
+
+This project is open source.
+
+## Contact
+
+**Eslam Madhoun** - [eslammadhoun3@gmail.com](mailto:eslammadhoun3@gmail.com)
+
+Project Link: [https://github.com/eslammadhoun/nectar](https://github.com/eslammadhoun/nectar)

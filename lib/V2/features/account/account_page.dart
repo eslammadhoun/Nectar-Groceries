@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nectar/V2/Data/services/auth_log_state.dart';
 import 'package:nectar/V2/Core/theme/app_theme.dart';
 import 'package:nectar/V2/features/account/account_page_vm.dart';
 import 'package:provider/provider.dart';
