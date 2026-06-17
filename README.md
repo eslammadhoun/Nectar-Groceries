@@ -4,18 +4,21 @@ A full-featured grocery shopping mobile application built with **Flutter** and *
 
 ## Screenshots
 
-| Onboarding | Home | Product Details |
-|:---:|:---:|:---:|
-| ![Onboarding](screenshots/onboarding.png) | ![Home](screenshots/home.png) | ![Product Details](screenshots/product_details.png) |
+| Splash | Onboarding |
+|:---:|:---:|
+| ![Splash](screenshots/splash.png) | ![Onboarding](screenshots/onboarding.png) |
 
-| Cart | Favorites | Account |
+| Login | Signup | Location |
 |:---:|:---:|:---:|
-| ![Cart](screenshots/cart.png) | ![Favorites](screenshots/favorites.png) | ![Account](screenshots/account.png) |
+| ![Login](screenshots/login.png) | ![SignUp](screenshots/signup.png) | ![Location](screenshots/location.png) |
 
-| Login | Sign Up | Location |
+| Home | Explore | Cart |
 |:---:|:---:|:---:|
-| ![Login](screenshots/login.png) | ![Sign Up](screenshots/signup.png) | ![Location](screenshots/location.png) |
+| ![Home](screenshots/home.png) | ![Explore](screenshots/explore.png) | ![Cart](screenshots/cart.png) |
 
+| Favourite | Product Details | Account |
+|:---:|:---:|:---:|
+| ![Favourite](screenshots/favorites.png) | ![Product Details](screenshots/product_details.png) | ![Account](screenshots/account.png) |
 ## Features
 
 - **Authentication** - Email/password login & registration via Firebase Auth
